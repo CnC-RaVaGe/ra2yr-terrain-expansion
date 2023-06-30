@@ -61,4 +61,10 @@ This will help you avoid errors when making your new tile.
     in the same folder as the original file you opened.
 
 #### Integrate Tile with Final Alert 2
-- TBD
+(More detailed instructions to follow)
+1. Package all the files in the folder where your new tile file is saved
+    ("theater folder") into a `.mix` file.
+2. Move the new `.mix` file into the RA2YR game folder.
+3. Edit the ini file in the theater folder to include a new tileset for your new tile.
+4. Copy the updated ini from the theater folder to the RA2YR game folder.
+5. Restart FA2 and start using your new tile.
