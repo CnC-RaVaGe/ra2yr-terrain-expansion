@@ -56,8 +56,9 @@ This will help you avoid errors when making your new tile.
         file extension as the file you opened.
 
     Your filename might be something like `sand01.des`.  Be sure that your chosen
-    basename does not conflict with an existing tileset!  You should save the file in
-    the same folder as the original file you opened.
+    `basename` does not conflict with an existing tileset! Also use a filename
+    (`basename` + `id`) that is no longer than 8 characters!  You should save the file
+    in the same folder as the original file you opened.
 
 #### Integrate Tile with Final Alert 2
 - TBD
