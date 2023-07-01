@@ -61,10 +61,39 @@ This will help you avoid errors when making your new tile.
     in the same folder as the original file you opened.
 
 #### Integrate Tile with Final Alert 2
-(More detailed instructions to follow)
 1. Package all the files in the folder where your new tile file is saved
     ("theater folder") into a `.mix` file.
-2. Move the new `.mix` file into the RA2YR game folder.
+    1. Open `XCC Mix Editor`.
+    2. Click `New...` and give your mix a name depending on your chosen theater:
+        - Urban: `expandmd13.mix`
+        - Temperate: `expandmd14.mix`
+        - Snow: `expandmd15.mix`
+        - NewUrban: `expandmd16.mix`
+        - Lunar: `expandmd17.mix`
+        - Desert: `expandmd18.mix`
+    3. Drag all the files in the theater folder to the `XCC Mix Editor` window.
+    4. Click `Save`.
+2. Move the new `.mix` file into the RA2YR game folder, overwriting one that's there if
+    necessary.
 3. Edit the ini file in the theater folder to include a new tileset for your new tile.
+    Each tileset gets its own ini section.  Here is an example section:
+
+    ```ini
+    [TileSet0208]
+    SetName = *Sand Fixes Z*
+    FileName = sand
+    TilesInSet = 1
+    LowRadarColor = 60,40,0
+    HighRadarColor = 80,50,0
+    AllowTiberium = true
+    ```
+    Note:
+    - Surround the `SetName` with asterisks. This is an RA2TX convention to distinguish
+        new tiles from those in the base game.
+    - The `SetName` and `FileName` must be unique for the ini file.
+    - `FileName` should match the `basename` (i.e. not including the `id`/`extension`) of your tile file.
+    - The ini header must start with `TileSet` and end with a 4 digit number. The number
+      should be the next available number for the ini file.
+    - `TilesInSet` should be set to the number of files you made for this set.
 4. Copy the updated ini from the theater folder to the RA2YR game folder.
 5. Restart FA2 and start using your new tile.
