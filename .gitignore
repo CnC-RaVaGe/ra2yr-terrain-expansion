@@ -1,0 +1,8 @@
+# Python artifacts / dev files
+__pycache__/
+venv/
+*.ipynb
+todo.md
+
+# Release artifacts
+*.mix
