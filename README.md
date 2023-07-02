@@ -2,12 +2,10 @@
 
 ## Prerequisites
 You should have the following tools available/installed:
-- XCC Utilities (includes the following:)
-    - XCC AV Player
-    - XCC Editor
-    - XCC MIX Editor
-    - XCC Mixer
-    - XCC TMP Editor
+- [XCC Utilities](https://xhp.xwis.net/), which includes the following:
+    - `XCC MIX Editor`
+    - `XCC Mixer`
+    - `XCC TMP Editor`
 - Text Editor, e.g. Notepad++, VSCode, etc
 - Photo editor, e.g. Photoshop
 
