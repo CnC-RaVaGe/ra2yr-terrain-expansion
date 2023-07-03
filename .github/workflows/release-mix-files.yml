@@ -15,10 +15,10 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: "3.x"
-    - name: Install ra2mix
+    - name: Install requirements
       run: >-
         python3 -m
-        pip install - r
+        pip install -r
         scripts/requirements.txt
         --user
     - name: Build Urban .mix file
