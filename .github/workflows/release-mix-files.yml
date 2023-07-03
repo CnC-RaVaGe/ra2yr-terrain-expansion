@@ -66,4 +66,4 @@ jobs:
       with:
         files: |
           expandmd1*.mix
-          "Development Files/YR/*/*.ini"
+          Development Files/YR/*/*.ini
