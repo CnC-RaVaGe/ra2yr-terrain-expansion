@@ -9,6 +9,9 @@ You should have the following tools available/installed:
 - Text Editor, e.g. Notepad++, VSCode, etc
 - Photo editor, e.g. Photoshop
 
+### Optional
+- [Python](https://www.python.org/downloads/) -- to use developer scripts
+
 ## Installation
 - TBD
 
@@ -96,3 +99,69 @@ This will help you avoid errors when making your new tile.
     - `TilesInSet` should be set to the number of files you made for this set.
 4. Copy the updated ini from the theater folder to the RA2YR game folder.
 5. Restart FA2 and start using your new tile.
+
+### Developer Scripts
+To speed up the development and testing process, you can use the developer scripts.  This
+requires python to be installed on your machine.
+
+#### Setup
+These steps only need to be run once:
+1. Install python if not already installed.
+2. Open a command window (or powershell) and navigate to the project directory.
+    ```powershell
+    cd "path\to\ra2yr-terrain-expansion"
+    ```
+3. Install the prerequisites. (You can use a `venv` for this if you want -- if you don't
+    understand what a venv is you can safely ignore this suggestion.)
+    ```powershell
+    pip install -r scripts\requirements.txt
+    ```
+4. Configure the scripts. Enter your absolute installation path to your RA2/YR
+    game folder.
+    ```powershell
+    python .\scripts\mix_handler.py config ra2_install_path "C:\path\to\Command and Conquer Red Alert II"
+    ```
+
+#### Usage
+Always run the scripts from the `ra2yr-terrain-expansion` folder!
+
+##### Show available commands
+```powershell
+python scripts\mix_handler.py --help
+```
+
+##### Apply Mods to Game / FA2
+When you have created some new tiles and modified the relevant `*.ini` files, run the
+following from the ra2yr-terrain-expansion folder:
+```powershell
+python scripts\mix_handler.py apply
+```
+This will create and copy the `*.mix` files and copy the `*.ini` files to the configured
+RA2/YR game directory. **NOTE:** Final Alert 2 / RA2YR cannot be running for this to
+work!
+
+##### Remove Mods from Game / FA2
+If you want to go back to vanilla/unmodded RA2/YR, run the following command:
+```powershell
+python scripts\mix_handler.py vanilla
+```
+
+This will delete the modded files (`*.mix` and `*.ini`) in the RA2/YR game folder
+
+##### Inspect a `*.mix` file
+```powershell
+python scripts\mix_handler.py summarize mix_filename
+```
+
+##### Create a `*.mix` file
+You can create a `*.mix` file from an existing folder of files. All files in the target
+folder will be added to the `*.mix` file:
+```powershell
+python scripts\mix_handler.py create path\to\folder mix_filename
+```
+
+##### Extract a `*.mix` file
+You can extract any `*.mix` file's internal files to an existing folder:
+```powershell
+python scripts\mix_handler.py extract mix_filename path\to\folder 
+```
