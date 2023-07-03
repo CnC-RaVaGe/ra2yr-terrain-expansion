@@ -65,9 +65,5 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          expandmd13.mix
-          expandmd14.mix
-          expandmd15.mix
-          expandmd16.mix
-          expandmd17.mix
-          expandmd18.mix
+          expandmd1*.mix
+          "Development Files/YR/*/*.ini"
