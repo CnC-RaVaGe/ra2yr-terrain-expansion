@@ -29,7 +29,7 @@ def extract(mix_filename: str, folder_name: str):
 
 @app.command()
 def summarize(mix_filename: str):
-    header, file_entries, _ = ra2mix.read_file(mix_filename)
+    header, file_entries, _ = ra2mix.read_file_info(mix_filename)
     print(header)
     print(file_entries)
 

@@ -1,5 +1,8 @@
 name: Create Release .mix Files
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
