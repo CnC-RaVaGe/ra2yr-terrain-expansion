@@ -1,0 +1,70 @@
+name: Create Release .mix Files
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+jobs:
+  build-n-publish:
+    name: Build and publish .mix files for release tag
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+    - name: Install ra2mix
+      run: >-
+        python3 -m
+        pip install - r
+        scripts/requirements.txt
+        --user
+    - name: Build Urban .mix file
+      run: >-
+        python3 ./scripts/mix_handler.py
+        create
+        "./Development Files/YR/Urban"
+        expandmd13.mix
+    - name: Build Temperate .mix file
+      run: >-
+        python3 ./scripts/mix_handler.py
+        create
+        "./Development Files/YR/Temperate"
+        expandmd14.mix
+    - name: Build Snow .mix file
+      run: >-
+        python3 ./scripts/mix_handler.py
+        create
+        "./Development Files/YR/Snow"
+        expandmd15.mix
+    - name: Build NewUrban .mix file
+      run: >-
+        python3 ./scripts/mix_handler.py
+        create
+        "./Development Files/YR/NewUrban"
+        expandmd16.mix
+    - name: Build Lunar .mix file
+      run: >-
+        python3 ./scripts/mix_handler.py
+        create
+        "./Development Files/YR/Lunar"
+        expandmd17.mix
+    - name: Build Desert .mix file
+      run: >-
+        python3 ./scripts/mix_handler.py
+        create
+        "./Development Files/YR/Desert"
+        expandmd18.mix
+    - name: Save release files
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          expandmd13.mix
+          expandmd14.mix
+          expandmd15.mix
+          expandmd16.mix
+          expandmd17.mix
+          expandmd18.mix

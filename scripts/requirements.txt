@@ -1,2 +1,2 @@
-crc==4.3.0
+ra2mix
 typer==0.9.0
