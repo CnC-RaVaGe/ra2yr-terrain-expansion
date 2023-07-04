@@ -15,8 +15,8 @@
         - [Apply Mods to Game / FA2](#apply-mods-to-game--fa2)
         - [Remove Mods from Game / FA2](#remove-mods-from-game--fa2)
         - [Inspect a `*.mix` file](#inspect-a-mix-file)
-        - [Create a `*.mix file](#create-a-mix-file)
-        - [Extract a `*.mix file](#extract-a-mix-file)
+        - [Create a `*.mix` file](#create-a-mix-file)
+        - [Extract a `*.mix` file](#extract-a-mix-file)
 
 
 ## Prerequisites
