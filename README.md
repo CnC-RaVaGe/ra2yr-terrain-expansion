@@ -1,4 +1,23 @@
-# README
+# RA2YR Terrain Expansion (RA2TX)
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+    - [Optional](#optional)
+- [Installation](#installation)
+- [Development](#development)
+    - [New Tiles](#new-tiles)
+        - [Create the Tile](#create-the-tile)
+        - [Integrate Tile with Final Alert 2](#integrate-tile-with-final-alert-2)
+    - [Developer Scripts](#developer-scripts)
+        - [Setup](#setup)
+        - [Usage](#usage)
+        - [Show available commands](#show-available-commands)
+        - [Apply Mods to Game / FA2](#apply-mods-to-game--fa2)
+        - [Remove Mods from Game / FA2](#remove-mods-from-game--fa2)
+        - [Inspect a `*.mix` file](#inspect-a-mix-file)
+        - [Create a `*.mix file](#create-a-mix-file)
+        - [Extract a `*.mix file](#extract-a-mix-file)
+
 
 ## Prerequisites
 You should have the following tools available/installed:
