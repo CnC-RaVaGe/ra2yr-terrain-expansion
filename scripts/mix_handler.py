@@ -35,8 +35,10 @@ def extract(mix_filename: str, folder_name: str):
 @app.command()
 def summarize(mix_filename: str):
     header, file_entries, _ = ra2mix.read_file_info(mix_filename)
-    print(header)
-    print(file_entries)
+    print(
+        f"Header[flags={hex(header.flags)}, file_count={header.file_count}, size={header.data_size}"
+    )
+    print(file_entries[:20])
 
     filemap = ra2mix.read(mix_filename)
     filetypes = {}
@@ -124,7 +126,7 @@ ini_sources = [
 
 
 @app.command()
-def apply():
+def apply(theater: Annotated[Optional[str], typer.Argument()] = None):
     if not os.path.exists("Development Files") and not os.path.exists("scripts"):
         print(
             "Error! Make sure to run the script from the ra2yr-terrain-expansion "
@@ -134,10 +136,14 @@ def apply():
 
     config_data = get_current_config()
     for path, mix_filename in mix_sources.items():
+        if theater is not None and not theater in path:
+            continue
         write_path = os.path.join(config_data.ra2_install_path, mix_filename)
         ra2mix.write(mix_filepath=write_path, folder_path=path)
 
     for ini_path in ini_sources:
+        if theater is not None and not theater in ini_path:
+            continue
         write_path = os.path.join(
             config_data.ra2_install_path, os.path.basename(ini_path)
         )

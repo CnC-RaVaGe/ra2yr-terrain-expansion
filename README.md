@@ -159,6 +159,15 @@ This will create and copy the `*.mix` files and copy the `*.ini` files to the co
 RA2/YR game directory. **NOTE:** Final Alert 2 / RA2YR cannot be running for this to
 work!
 
+You may optionally supply a theater name (case-sensitive) to apply mods from only that
+theater:
+- Urban
+- Temperate
+- Snow
+- NewUrban
+- Lunar
+- Desert
+
 ##### Remove Mods from Game / FA2
 If you want to go back to vanilla/unmodded RA2/YR, run the following command:
 ```powershell
