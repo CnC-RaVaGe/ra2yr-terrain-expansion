@@ -8,6 +8,7 @@
     - [New Tiles](#new-tiles)
         - [Create the Tile](#create-the-tile)
         - [Integrate Tile with Final Alert 2](#integrate-tile-with-final-alert-2)
+        - [Test Tiles In Game](#test-tiles-in-game)
     - [Developer Scripts](#developer-scripts)
         - [Setup](#setup)
         - [Usage](#usage)
