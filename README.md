@@ -119,6 +119,12 @@ This will help you avoid errors when making your new tile.
 4. Copy the updated ini from the theater folder to the RA2YR game folder.
 5. Restart FA2 and start using your new tile.
 
+#### Test Tiles In Game
+1. After using your new tiles in a map created with Final Alert 2, you can test your map
+    in game. 
+2. The process is the same as integrating with Final Alert 2, except you name the files
+    as `expandspawn##.mix` instead of `expandmd##.mix`.
+
 ### Developer Scripts
 To speed up the development and testing process, you can use the developer scripts.  This
 requires python to be installed on your machine.

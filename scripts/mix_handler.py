@@ -138,8 +138,13 @@ def apply(theater: Annotated[Optional[str], typer.Argument()] = None):
     for path, mix_filename in mix_sources.items():
         if theater is not None and not theater in path:
             continue
-        write_path = os.path.join(config_data.ra2_install_path, mix_filename)
-        ra2mix.write(mix_filepath=write_path, folder_path=path)
+        md_mix_write_path = os.path.join(config_data.ra2_install_path, mix_filename)
+        ra2mix.write(mix_filepath=md_mix_write_path, folder_path=path)
+
+        spawn_mix_write_path = os.path.join(
+            config_data.ra2_install_path, mix_filename.replace("md", "spawn")
+        )
+        shutil.copyfile(md_mix_write_path, spawn_mix_write_path)
 
     for ini_path in ini_sources:
         if theater is not None and not theater in ini_path:
