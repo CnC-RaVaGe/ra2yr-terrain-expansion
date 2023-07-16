@@ -159,17 +159,18 @@ def apply(theater: Annotated[Optional[str], typer.Argument()] = None):
 @app.command()
 def vanilla():
     config_data = get_current_config()
-    for mix_filename in mix_sources.values():
-        del_path = os.path.join(config_data.ra2_install_path, mix_filename)
+
+    def delete_ra2_file(filename: str):
+        del_path = os.path.join(config_data.ra2_install_path, filename)
         print(f"Deleting {del_path}")
         os.remove(del_path)
 
+    for mix_filename in mix_sources.values():
+        delete_ra2_file(mix_filename)
+        delete_ra2_file(mix_filename.replace("md", "spawn"))
+
     for ini_path in ini_sources:
-        del_path = os.path.join(
-            config_data.ra2_install_path, os.path.basename(ini_path)
-        )
-        print(f"Deleting {del_path}")
-        os.remove(del_path)
+        delete_ra2_file(os.path.basename(ini_path))
 
 
 if __name__ == "__main__":
