@@ -8,6 +8,7 @@
     - [New Tiles](#new-tiles)
         - [Create the Tile](#create-the-tile)
         - [Integrate Tile with Final Alert 2](#integrate-tile-with-final-alert-2)
+        - [Test Tiles In Game](#test-tiles-in-game)
     - [Developer Scripts](#developer-scripts)
         - [Setup](#setup)
         - [Usage](#usage)
@@ -119,6 +120,12 @@ This will help you avoid errors when making your new tile.
 4. Copy the updated ini from the theater folder to the RA2YR game folder.
 5. Restart FA2 and start using your new tile.
 
+#### Test Tiles In Game
+1. After using your new tiles in a map created with Final Alert 2, you can test your map
+    in game. 
+2. The process is the same as integrating with Final Alert 2, except you name the files
+    as `expandspawn##.mix` instead of `expandmd##.mix`.
+
 ### Developer Scripts
 To speed up the development and testing process, you can use the developer scripts.  This
 requires python to be installed on your machine.
@@ -158,6 +165,15 @@ python scripts\mix_handler.py apply
 This will create and copy the `*.mix` files and copy the `*.ini` files to the configured
 RA2/YR game directory. **NOTE:** Final Alert 2 / RA2YR cannot be running for this to
 work!
+
+You may optionally supply a theater name (case-sensitive) to apply mods from only that
+theater:
+- Urban
+- Temperate
+- Snow
+- NewUrban
+- Lunar
+- Desert
 
 ##### Remove Mods from Game / FA2
 If you want to go back to vanilla/unmodded RA2/YR, run the following command:

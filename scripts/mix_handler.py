@@ -35,8 +35,10 @@ def extract(mix_filename: str, folder_name: str):
 @app.command()
 def summarize(mix_filename: str):
     header, file_entries, _ = ra2mix.read_file_info(mix_filename)
-    print(header)
-    print(file_entries)
+    print(
+        f"Header[flags={hex(header.flags)}, file_count={header.file_count}, size={header.data_size}"
+    )
+    print(file_entries[:20])
 
     filemap = ra2mix.read(mix_filename)
     filetypes = {}
@@ -124,7 +126,7 @@ ini_sources = [
 
 
 @app.command()
-def apply():
+def apply(theater: Annotated[Optional[str], typer.Argument()] = None):
     if not os.path.exists("Development Files") and not os.path.exists("scripts"):
         print(
             "Error! Make sure to run the script from the ra2yr-terrain-expansion "
@@ -134,10 +136,19 @@ def apply():
 
     config_data = get_current_config()
     for path, mix_filename in mix_sources.items():
-        write_path = os.path.join(config_data.ra2_install_path, mix_filename)
-        ra2mix.write(mix_filepath=write_path, folder_path=path)
+        if theater is not None and not theater in path:
+            continue
+        md_mix_write_path = os.path.join(config_data.ra2_install_path, mix_filename)
+        ra2mix.write(mix_filepath=md_mix_write_path, folder_path=path)
+
+        spawn_mix_write_path = os.path.join(
+            config_data.ra2_install_path, mix_filename.replace("md", "spawn")
+        )
+        shutil.copyfile(md_mix_write_path, spawn_mix_write_path)
 
     for ini_path in ini_sources:
+        if theater is not None and not theater in ini_path:
+            continue
         write_path = os.path.join(
             config_data.ra2_install_path, os.path.basename(ini_path)
         )
@@ -148,17 +159,18 @@ def apply():
 @app.command()
 def vanilla():
     config_data = get_current_config()
-    for mix_filename in mix_sources.values():
-        del_path = os.path.join(config_data.ra2_install_path, mix_filename)
+
+    def delete_ra2_file(filename: str):
+        del_path = os.path.join(config_data.ra2_install_path, filename)
         print(f"Deleting {del_path}")
         os.remove(del_path)
 
+    for mix_filename in mix_sources.values():
+        delete_ra2_file(mix_filename)
+        delete_ra2_file(mix_filename.replace("md", "spawn"))
+
     for ini_path in ini_sources:
-        del_path = os.path.join(
-            config_data.ra2_install_path, os.path.basename(ini_path)
-        )
-        print(f"Deleting {del_path}")
-        os.remove(del_path)
+        delete_ra2_file(os.path.basename(ini_path))
 
 
 if __name__ == "__main__":
